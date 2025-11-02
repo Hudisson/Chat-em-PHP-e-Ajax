@@ -1,0 +1,14 @@
+{
+    "name": "hudisson-xavier/chat-em-php-e-ajax",
+    "authors": [
+        {
+            "name": "Hudisson Xavier",
+            "email": "contatohudissonxavier@gmail.com"
+        }],
+    "autoload": {
+        "psr-4": {
+            "App\\":"src/"
+        }
+    }
+    
+}
