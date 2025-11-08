@@ -14,18 +14,9 @@
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="card shadow-lg p-2 custom-card">
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-4 text-primary">Crie sua Conta!</h2>
+                        <h2 class="card-title text-center mb-4 text-primary">Login</h2>
                         <form action="#" method="POST">
-                            <div class="mb-3">
-                                <label for="nomeCompleto" class="form-label">Nome Completo</label>
-                                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" placeholder="Seu Nome e Sobrenome" required>
-                            </div>
                             
-                            <div class="mb-3">
-                                <label for="nomeUsuario" class="form-label">Data de Nascimento</label>
-                                <input type="date" class="form-control" id="nascimento" name="nascimento" required>
-                            </div>
-
                             <div class="mb-3">
                                 <label for="email" class="form-label">Endereço de E-mail</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com" required>
@@ -36,19 +27,14 @@
                                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Mínimo 8 caracteres" required minlength="8">
                             </div>
 
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="termos" name="termos" required>
-                                <label class="form-check-label" for="termos">Eu concordo com os <a href="#" class="text-decoration-none">Termos de Serviço</a></label>
-                            </div>
-
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
                             </div>
                         </form>
                         
                         <hr class="my-4">
 
-                        <p class="text-center">Já tem uma conta? <a href="<?php echo $APP_URL; ?>" class="text-decoration-none">Faça Login</a></p>
+                        <p class="text-center">Não tenho uma conta? <a href="<?php echo $APP_URL; ?>/cadastro" class="text-decoration-none">Criar conta</a></p>
                     </div>
                 </div>
             </div>

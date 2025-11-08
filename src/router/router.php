@@ -2,7 +2,7 @@
 
 $routes = [
     
-    "/"  => "HomeController@index",
+    "/"          => "LoginController@index",
     "/cadastro"  => "CadastroController@index",
  
 ];
