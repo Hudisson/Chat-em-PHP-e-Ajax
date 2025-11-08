@@ -4,12 +4,13 @@ namespace App\controller;
 
 use App\utils\RenderView;
 
-class CadastroController extends RenderView
+class LoginController extends RenderView
 {
+
     public function index()
     {
-        $this->loadView("cadastro",[
-            'title' => "Cadastrar-se no Chat",
+        $this->loadView("login",[
+            'title' => "Login",
             'APP_URL' =>  getenv('APP_URL'),
         ]);
 
