@@ -4,6 +4,23 @@
     box-sizing: border-box;
 }
 
+form .field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+form .field i{
+    position: absolute;
+    right: 15px;
+    top: 60%;
+    /* transform: translateY(-1%); */
+    color: #ccc;
+    cursor: pointer;
+}
+form .field i:hover{
+    color: black;
+}
 
 .custom-card {
     border-radius: 15px;
