@@ -8,6 +8,11 @@ include_once "includes/header.php";
             <div class="card shadow-lg p-2 custom-card">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4 text-primary">Crie sua Conta!</h2>
+
+                    <div class="alert alert-danger" role="alert">
+                        Aqui mostrará uma mensagem de erro!
+                    </div>
+
                     <form action="#" method="POST">
                         <div class="mb-3">
                             <label for="nomeCompleto" class="form-label">Nome Completo</label>
@@ -27,13 +32,13 @@ include_once "includes/header.php";
                         <div class="mb-3 field">
                             <label for="senha" class="form-label">Senha</label>
                             <input type="password" class="form-control" id="senha" name="senha" placeholder="Mínimo 8 caracteres" required minlength="8">
-                            <i class="fas fa-eye"></i> 
+                            <i class="fas fa-eye"></i>
                         </div>
 
                         <div class="mb-3 field">
                             <label for="rsenha" class="form-label">Repita a senha</label>
                             <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Mínimo 8 caracteres" required minlength="8">
-                             <i class="fas fa-eye"></i> 
+                            <i class="fas fa-eye"></i>
                         </div>
 
 
