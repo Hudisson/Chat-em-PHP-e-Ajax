@@ -4,6 +4,21 @@
     box-sizing: border-box;
 }
 
+/* Variáveis CSS para Cores e Espaçamento */
+:root {
+    --header-bg: #ece9e9;
+    --chat-bg: #f7f4f4;
+    --online-color: #39ec39;
+    --msg-received-bg: #225179;
+    --msg-sent-bg: #417db3;
+    --contact-highlight-bg: #3b6097;
+    --primary-color: #3b6097;
+    --spacing-sm: 5px;
+    --spacing-md: 15px;
+}
+
+/*======================================PÁGINAS DE LOGIN E CADASTRO===========================*/
+
 form .field{
     display: flex;
     flex-direction: column;
@@ -56,153 +71,220 @@ hr {
     opacity: 0.1;
 }
 
-/* Ajusta o padding no container para telas muito pequenas */
-@media (max-width: 576px) {
-    .container {
-        padding: 0 15px;
-    }
-}
-
-/*================================*/
-header{
-    background-color: #ece9e9;
+/*=================================================================================================================================*/
+/* LAYOUT GERAL */
+.container.wrapper {
     width: 100%;
-    height: 50px;
-}
-.content{
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   width: 100%;
 }
 
-.img-foto{
-    margin-right: 70%;
-}
 
-.img-foto img{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
-.logo-chat{
-    width: 16%;
-}
-
-.logo-chat h1{
-    font-size: 20px;
-}
-
-.details{
-    display: flex; 
-    flex-direction: row;
+/* =============================================== HEADER ===================================*/
+header {
+    background-color: var(--header-bg);
+    width: 100%;
+    height: 60px;
+    border-radius: 0 0 5px 5px;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 0 var(--spacing-md);
+    box-sizing: border-box; /* Garante que padding não afete a altura/largura */
+}
+
+.header-info { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo-chat h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.profile-summary {
+    display: flex;
+    align-items: center;
     line-height: 1.2;
-    transform: translateX(-900px);
+    margin-left: auto; /* Empurra para o canto direito */
 }
 
-.details span{ 
-    margin-right: 10px;
-    font-size: 18px;
+.profile-summary span {
+    margin-right: var(--spacing-sm);
+    font-size: 16px;
+    font-weight: bold;
 }
 
-.details p{
-    margin-right: 10px;
-    transform: translateY(10px);
-    color: #39ec39;
+.profile-summary .online-status { /* Classe mais clara para o status */
+    margin-right: 15px;
+    color: var(--online-color);
     font-size: 14px;
 }
 
-.main{
+.profile-image-container { 
+    margin-left: var(--spacing-md); /* Espaçamento entre o status e a imagem */
+}
+
+.profile-image-container img {
+    height: 40px; 
+    width: 40px; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/*====================================== MAIN CHAT AREA ==============================*/
+.main-layout {
+    display: grid;
+    /* Define 2/3 para o chat e 1/3 para a lista de contatos (aproximadamente) */
+    grid-template-columns: 2fr 350px; 
+    height: calc(100vh - 60px); /* Altura da tela menos a altura do header */
+    margin-top: 0; 
+}
+
+.chat-view {
     width: 100%;
+    height: 100%;
+    background-color: var(--chat-bg);
+    display: flex;
+    flex-direction: column; /* Organiza elementos verticalmente */
+    overflow-y: hidden;
+    margin-top: 10px;
+    margin-left: -12px;
+    border-radius: 10px;
+}
+
+/* Contato do Chat (Fulano da Silva) */
+.contact-msg {
+    padding: var(--spacing-md);
+    background-color: #e2e2e2;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-msg .status {
+    color: var(--online-color);
+}
+
+/* =======================================ÁREA DE CONVERSA=============================== */
+.conversation {
+    flex-grow: 1; /* Ocupa o espaço restante */
+    padding: var(--spacing-sm);
+    overflow-y: auto; /* Habilita a rolagem das mensagens */
+    display: flex;
+    flex-direction: column; /* Mensagens uma abaixo da outra */
+    gap: 10px !important; /* Espaço entre as mensagens */
+    padding: 15px;
+}
+
+.msg-received, .msg-sent {
+    max-width: 60%; /* Define uma largura máxima para as bolhas */
+    padding: 10px 15px;
+    color: #fff;
+    word-wrap: break-word; /* Garante que o texto quebre corretamente */
+}
+
+.msg-received {
+    background-color: var(--msg-received-bg);
+    border-radius: 15px 15px 15px 5px;
+    align-self: flex-start; /* Alinha à esquerda */
+}
+
+.msg-sent {
+    background-color: var(--msg-sent-bg);
+    border-radius: 15px 15px 5px 15px;
+    align-self: flex-end; /* Alinha à direita */
+}
+
+/* ===============================================LISTA DE CONTATOS =================================================*/
+.contact-list {
+    width: 100%;
+    height: 100%;
+    background-color: var(--header-bg);
+    border-left: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    margin-top: 10px;
+    margin-left: 12px;
+    border-radius: 10px;
+}
+
+.contact-list .search {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid #ccc;
+}
+
+.contact-list .search label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-list .search input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-left: 0; 
+}
+
+.contacts-container {
+    overflow-y: auto; /* Habilita a rolagem da lista de amigos */
+    padding: var(--spacing-md) 0;
+    flex-grow: 1;
+}
+
+.friend-item { 
+    width: 90%;
+    background-color: var(--contact-highlight-bg);
+    margin: 3px auto; /* Centraliza e adiciona margem vertical */
+    border-radius: 10px;
+    color: #fff;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 10px;
-
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.chat-view{
-    width: 800px;
-    height: 100vh;
-    background-color: #f7f4f4;
-    transform: translateX(-11px);
+.friend-item:hover {
+    background-color: #2a4773; /* Escurece no hover */
 }
 
-.chat-view .conversation{
-    display: flex;
-   align-items: center;
-   justify-content: space-between;
+.friend-item img {
+    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 3px solid var(--online-color);
+    object-fit: cover;
 }
 
-.contact-msg .status{
-    color: #18eb18;
-    margin-left: 80%;
+.friend-info {
+    flex-grow: 1; /* Permite que o nome do amigo ocupe o espaço */
 }
 
-.conversation .msg-received{
-    width: 45%;
-    background-color: #225179;
-    color: #fff;
-    border-radius: 5px 0 15px 5px;
+.friend-name {
+    font-weight: bold;
+}
+
+.friend-item .status {
+    font-size: 12px;
+    color: var(--online-color);
     margin-left: 5px;
 }
 
-.conversation .msg-sent{
-    width: 45%;
-    background-color: #417db3;
-    color: #fff;
-    border-radius: 5px 15px 0 5px;
-    margin-right: 5px;
-    transform: translateY(50px);
+/* Estilo para links de logout */
+.logout {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    margin-left: var(--spacing-md);
 }
 
-.contact-list{
-    width: 350px;
-    height: 100vh;
-    background-color: #ece9e9;
-    transform: translateX(11px);
-}
-
-.contact-list .search{
-    width: 100%;
-}
-.contact-list .search input {
-    width: 90%;
-    margin-left: 15px;
-}
-.contact-list .search label{
-    margin-left: 15px;
-}
-
-
-.contact-list .friends{
-    width: 90%;
-    background-color: #3b6097;
-    margin-top: 3px;
-    margin-left: 15px;
-    border-radius: 10px;
-    color: #fff;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.contact-list .friends img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 3px solid #0bee0b;
-}
-
-.contact-list .friends .status{
-    font-size: 12px;
-    margin-right: 5px;
-    color: #18eb18;
-}
 /*=============================================*/
 
 
