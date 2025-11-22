@@ -2,6 +2,13 @@
 include_once "includes/header.php";
 ?>
 
+<style>
+    form .field i.active::before{
+    color: #333;
+    content: '\f070';
+}
+</style>
+
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-lg-6 col-md-8 col-sm-10">
@@ -40,6 +47,7 @@ include_once "includes/header.php";
     </div>
 </div>
 
+<script src="../../../chat/resources/assets/js/eyeScriptLogin.js"></script>
 <?php
 include_once "includes/footer.php";
 ?>

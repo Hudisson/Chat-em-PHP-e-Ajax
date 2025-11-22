@@ -2,6 +2,13 @@
 include_once "includes/header.php";
 ?>
 
+<style>
+    form .field i.active::before{
+    color: #333;
+    content: '\f070';
+}
+</style>
+
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-lg-6 col-md-8 col-sm-10">
@@ -35,7 +42,7 @@ include_once "includes/header.php";
                             <i class="fas fa-eye"></i>
                         </div>
 
-                        <div class="mb-3 field">
+                        <div class="mb-3 field field-rsenha">
                             <label for="rsenha" class="form-label">Repita a senha</label>
                             <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Mínimo 8 caracteres" required minlength="8">
                             <i class="fas fa-eye"></i>
@@ -60,6 +67,8 @@ include_once "includes/header.php";
         </div>
     </div>
 </div>
+
+<script src="../../../chat/resources/assets/js/eyeScriptCadastro.js"></script>
 
 <?php
 include_once "includes/footer.php";
