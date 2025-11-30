@@ -10,6 +10,7 @@ class HomeController extends RenderView
     {
         $this->loadView("home",[
             'title' => "Home Page",
+            'APP_URL' =>  getenv('APP_URL'),
         ]);
 
     }

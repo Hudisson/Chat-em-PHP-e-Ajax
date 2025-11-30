@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['usuario_logado'])){
+    header("Location: $APP_URL", true, 302);
+    exit();
+}
+
 include_once "includes/header.php";
 ?>
 
@@ -11,7 +18,7 @@ include_once "includes/header.php";
             </div>
 
             <div class="profile-summary">
-                <span>João</span>
+                <span> <?php echo $_SESSION['usuario_logado']; ?> </span>
                 <span class="online-status">Online</span>
                 <a href="#" class="logout">Sair</a>
             </div>

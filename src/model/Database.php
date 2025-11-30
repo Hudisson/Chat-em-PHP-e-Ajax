@@ -21,7 +21,7 @@ class Database
     }
    
 
-    public static function getConnnection()
+    public static function getConnection()
     {
         self::loadEnv();
 
