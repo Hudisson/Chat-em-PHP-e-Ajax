@@ -44,12 +44,17 @@ class CadastroController extends RenderView
      * @return array
      */
     public function newUser(){
+
         // 1. Verificar se os campos são vazios
-        if($this->nomeCompleto == "" || $this->email == "" || $this->senha == "" || $this->rsenha == "" || $this->termosContrato == ""){ 
+        if(empty($this->nomeCompleto) || empty($this->email) || empty($this->senha) || empty($this->rsenha)){
             return ["erro" => "Preencha todos os campos"];
         }
 
-        // 2. Verificar se as senha digitadas são iguais
+        if(is_null($this->termosContrato) || empty($this->termosContrato)){
+            return ["erro" => "É preciso aceitar os termos de uso"];
+        }
+      
+        // 2. Verificar se as senhas digitadas são iguais
         if($this->senha != $this->rsenha){
             return ["erro" => "As senhas são diferentes"];
         }
