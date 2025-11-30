@@ -17,7 +17,7 @@ class UserModel extends Database
      */
     public static function save(array $data)
     {
-        $pdo = self::getConnnection();
+        $pdo = self::getConnection();
 
         $stmt = $pdo->prepare("
         INSERT INTO tb_users_chatapp (user_name, user_email, user_password, termos_de_uso)

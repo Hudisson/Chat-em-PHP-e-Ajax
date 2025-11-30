@@ -1,12 +1,52 @@
 <?php
+session_start(); // 1. Inicia a sessão
+
+// 2 Verifica o usuário estar logado e, se retorna verdadeiro, o redireciona para à página home
+if(isset($_SESSION['usuario_logado'])){
+    header("Location: $APP_URL/home", true, 302);
+    exit();
+}
+
+use App\controller\LoginController;
+
+$status = []; // 3. Declara um array para armazena a(s) resposta(s)
+
+// 4. Verifica se os campos do formulário foram enviados
+if (isset($_POST['email']) && isset($_POST['senha'])) {
+
+    // 5. Cria uma instâcia da Classe LoginController
+    $userLogin = new LoginController();
+
+    // 6. Inseri os valore dos campos em seus respectivos métodos SET
+    $userLogin->setEmail(htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8'));
+    $userLogin->setSenha(htmlspecialchars($_POST['senha'], ENT_QUOTES, 'UTF-8'));
+
+    $status = $userLogin->login();
+
+    /**  7. Verifica se NÃO há alguma chave de erro no array $status, se retorna verdadeiro
+     * cria as variáveis de sessão e redireciona para à página home.
+    **/
+    if (!array_key_exists("erro", $status)) {
+
+        $_SESSION['usuario_logado_id']     = $status['id'];
+        $_SESSION['usuario_logado']        = $status['name'];
+        $_SESSION['usuario_logado_email']  = $status['email'];
+        $_SESSION['usuario_logado_status'] = $status['status'];
+        
+        header("Location: $APP_URL/home", true, 302);
+        exit();
+    }
+}
+
 include_once "includes/header.php";
+
 ?>
 
 <style>
-    form .field i.active::before{
-    color: #333;
-    content: '\f070';
-}
+    form .field i.active::before {
+        color: #333;
+        content: '\f070';
+    }
 </style>
 
 <div class="container">
@@ -15,21 +55,22 @@ include_once "includes/header.php";
             <div class="card shadow-lg p-2 custom-card">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4 text-primary">Login</h2>
+                    <?php if (array_key_exists("erro", $status)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $status['erro']; ?>
+                        </div>
+                    <?php endif; ?>
 
-                    <div class="alert alert-danger" role="alert">
-                        Aqui mostrará uma mensagem de erro!
-                    </div>
-
-                    <form action="#" method="POST">
+                    <form method="POST">
 
                         <div class="mb-3 field">
                             <label for="email" class="form-label">Endereço de E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com">
                         </div>
 
                         <div class="mb-3 field">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Mínimo 8 caracteres" required minlength="8">
+                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Mínimo 8 caracteres" minlength="8">
                             <i class="fas fa-eye"></i>
                         </div>
 
