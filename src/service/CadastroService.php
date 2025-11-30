@@ -17,13 +17,8 @@ class CadastroService
 
        try{
 
-            if($data['termo'] != "on"){
-                return ["erro", "É preciso aceitar os termos de serviço!"];
-            }else{
-                $data['termo'] = "aceito";
-            }
+            $data['termos'] = "aceito";
 
-          
            # Encripta a senha enviada antes de salvar na base de dados
            $data['password']  = password_hash($data['password'], PASSWORD_DEFAULT);
             

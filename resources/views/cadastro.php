@@ -18,7 +18,7 @@ include_once "includes/header.php";
 $status = []; // 1. Declara um array para armazena a(s) resposta(s)
 
 // 2. Verifica se os campos do formulário foram enviados
-if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['rsenha']) && isset($_POST['termos'])) {
+if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['rsenha'])) {
 
     // 3. Cria uma instâcia da Classe CadastroController
     $newUser = new CadastroController();
@@ -28,7 +28,13 @@ if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['sen
     $newUser->setEmail(htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8'));
     $newUser->setSenha(htmlspecialchars($_POST['senha'], ENT_QUOTES, 'UTF-8'));
     $newUser->setRSenha(htmlspecialchars($_POST['rsenha'], ENT_QUOTES, 'UTF-8'));
-    $newUser->setTermos(htmlspecialchars($_POST['termos'], ENT_QUOTES, 'UTF-8'));
+
+    if(isset($_POST['termos'])){
+        $newUser->setTermos('aceito');
+    }else{
+        $newUser->setTermos(null);
+    }
+
 
     // 5. Retorna a resposta para o array $status
     $status = $newUser->newUser();
@@ -80,8 +86,8 @@ if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['sen
                         </div>
 
 
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="termos" name="termos">
+                        <div class="mb-3 form-check" style='<?php if ($status['erro'] == "É preciso aceitar os termos de uso"): ?> border: 3px solid red; <?php endif; ?>'>
+                            <input type="checkbox" class="form-check-input" id="termos" name="termos" >
                             <label class="form-check-label" for="termos">Eu concordo com os <a href="<?php echo $APP_URL; ?>/termos-de-servico" class="text-decoration-none">Termos de Serviço</a></label>
                         </div>
 
