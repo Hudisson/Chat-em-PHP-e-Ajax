@@ -53,4 +53,17 @@ class LoginController extends RenderView
     {
         $this->senha = $senha;
     }
+
+
+    /**Sair */ 
+    public function logout()
+    {
+
+        $this->loadView("sair", [
+            'title' => "Sair",
+            'APP_URL' =>  getenv('APP_URL'),
+        ]);
+    
+    }
+
 }
