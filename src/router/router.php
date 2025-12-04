@@ -4,9 +4,10 @@
 $routes = [
     
     "/"                   => "LoginController@index",
+    "/sair"               => "LoginController@logout",
     "/cadastro"           => "CadastroController@index",
     "/termos-de-servico"  => "CadastroController@termosDeServico",
-
-    "/home"                => "HomeController@index",
+    "/home"               => "HomeController@index",
+    "/settings"           => "HomeController@settings",
  
 ];

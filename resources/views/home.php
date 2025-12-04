@@ -9,6 +9,15 @@ if(!isset($_SESSION['usuario_logado'])){
 include_once "includes/header.php";
 ?>
 
+<style>
+    .linha-vertical{
+        border-left: 2px solid;
+        box-sizing: border-box;
+        height: 30px;
+        margin-left: 10px;
+    }
+</style>
+
 <div class="container wrapper">
     <header>
         <div class="header-info">
@@ -20,7 +29,9 @@ include_once "includes/header.php";
             <div class="profile-summary">
                 <span> <?php echo $_SESSION['usuario_logado']; ?> </span>
                 <span class="online-status">Online</span>
-                <a href="#" class="logout">Sair</a>
+                <a href='<?php echo "$APP_URL/settings"; ?>' class="logout">Settings</a>
+                <div class="linha-vertical"></div>
+                <a href='<?php echo "$APP_URL/sair"; ?>' class="logout">Logout</a>
             </div>
             
             <div class="profile-image-container">
