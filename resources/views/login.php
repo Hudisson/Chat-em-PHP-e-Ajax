@@ -32,6 +32,8 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         $_SESSION['usuario_logado']        = $status['name'];
         $_SESSION['usuario_logado_email']  = $status['email'];
         $_SESSION['usuario_logado_status'] = $status['status'];
+        $_SESSION['foto_de_perfil']        = $status['fotoPerfil'];
+
         
         header("Location: $APP_URL/home", true, 302);
         exit();
@@ -70,7 +72,7 @@ include_once "includes/header.php";
 
                         <div class="mb-3 field">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Mínimo 8 caracteres" minlength="8">
+                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Mínimo 8 caracteres">
                             <i class="fas fa-eye"></i>
                         </div>
 
