@@ -34,6 +34,7 @@ class LoginModel extends Database
             'name'  => $user['user_name'],
             'email' => $user['user_email'],
             'status' => $user['user_status'],
+            'fotoPerfil' => $user['photo_profile'],
         ];
     }
 }

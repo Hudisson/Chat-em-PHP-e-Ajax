@@ -34,4 +34,26 @@ class UserModel extends Database
         return $pdo->lastInsertId() > 0 ? true : false;
     }
 
+    /**
+     * Método par asalvar o caminho da imagem no banco de dados
+     */
+    public static function uploadPhotoProfile($caminhoDaImagem, $id_usuario){
+
+        $data = ['photo'=>$caminhoDaImagem, 'id_usuario'=>$id_usuario];
+
+        $pdo = self::getConnection();
+        
+        $stmt = $pdo->prepare("
+            UPDATE tb_users_chatapp SET photo_profile = ? WHERE user_id = ?
+        ");
+
+        $stmt->execute([
+            $data['photo'],
+            $data['id_usuario'],
+        ]);
+
+       return $stmt->rowCount() > 0;
+        
+    }
+
 }

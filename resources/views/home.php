@@ -35,7 +35,11 @@ include_once "includes/header.php";
             </div>
             
             <div class="profile-image-container">
-                <img src="../../../chat/resources/assets/img/h.jpeg" alt="Foto de Perfil de João">
+                <?php if(empty($_SESSION['foto_de_perfil'])): ?>
+                    <img src="../../../chat/resources/assets/img/user_996351.png" >
+                <?php else: ?>
+                    <img src="../../../chat/resources/<?php echo $_SESSION['foto_de_perfil']; ?>" alt="<?php echo $_SESSION['foto_de_perfil']; ?>">
+                <?php endif; ?>    
             </div>
 
         </div>

@@ -3,11 +3,13 @@
 namespace App\controller;
 
 use App\utils\RenderView;
+use App\service\SettingsService;
 
 class HomeController extends RenderView
 {
 
     private $photoProfile = [];
+    private $idUsuario;
 
     public function index()
     {
@@ -29,7 +31,7 @@ class HomeController extends RenderView
     {
 
         if (empty($this->photoProfile['name'])){
-            return ['erro' => 'Descupe, nenhum arquivo selecionado. Escolha um arquivo [jpg/jpeg, png] para upload'];
+            return ['erro' => 'Descupe, nenhum arquivo selecionado para upload'];
         }
 
         $allowed_extensions = ['jpg', 'jpeg', 'png'];
@@ -45,7 +47,11 @@ class HomeController extends RenderView
             return ['erro' => "Descupe, Formato de arquivo inválido <b>$imageFileType</b> só é permitido arquivos no formato [jpg/jpeg e png]"];
         }
 
-        return ['sucesso'=> "sucesso"];
+        # Chama o SettingService
+
+        $settingService = SettingsService::uploadPhotoProfile($this->photoProfile, $this->idUsuario);
+
+        return $settingService;
 
     }
 
@@ -53,5 +59,10 @@ class HomeController extends RenderView
     public function setPhotoProfile(array $file)
     {
         $this->photoProfile = $file;
+    }
+
+    public function setIdUsuario($id_usuario)
+    {
+        $this->idUsuario = $id_usuario;
     }
 }
