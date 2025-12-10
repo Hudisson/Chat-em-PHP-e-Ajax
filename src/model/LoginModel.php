@@ -15,8 +15,18 @@ class LoginModel extends Database
     public static function autentication(array $data)
     {
 
-
+        $userOline['online'] = 'online';
         $pdo = self::getConnection();
+
+        # Atualizar de offline para online
+        $query = $pdo->prepare("
+            UPDATE tb_users_chatapp SET user_online = ? WHERE user_email = ?
+        ");
+
+        $query->execute([
+            $userOline['online'],
+            $data['email'],
+        ]);
 
         $stmt = $pdo->prepare("SELECT * FROM tb_users_chatapp WHERE user_email = ?");
         // user_email, user_password
@@ -27,7 +37,17 @@ class LoginModel extends Database
 
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        if (!password_verify($data['password'], $user['user_password'])) return ['erro' => 'Descupe, conta inválida ou inesistente'];
+        if (!password_verify($data['password'], $user['user_password'])) {
+
+            $userOline['online'] = 'offline';
+
+            $query->execute([
+                $userOline['online'],
+                $data['email'],
+            ]);
+
+            return ['erro' => 'Descupe, conta inválida ou inesistente'];
+        }
 
         return [
             'id'    => $user['user_id'],
@@ -35,6 +55,26 @@ class LoginModel extends Database
             'email' => $user['user_email'],
             'status' => $user['user_status'],
             'fotoPerfil' => $user['photo_profile'],
+            'user_online' => $user['user_online'],
         ];
+    }
+
+    public static function sair(array $data)
+    {
+
+        $pdo = self::getConnection();
+
+        # Atualizar de offline para online
+        $stmt = $pdo->prepare("
+            UPDATE tb_users_chatapp SET user_online = ? WHERE user_id = ?
+        ");
+
+        $stmt->execute([
+            $data['online'],
+            $data['id'],
+        ]);
+
+
+        return $stmt->rowCount() > 0;
     }
 }
