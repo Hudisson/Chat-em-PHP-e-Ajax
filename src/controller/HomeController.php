@@ -27,6 +27,22 @@ class HomeController extends RenderView
         ]);
     }
 
+    public function buscaFotoPerfil()
+    {
+        $this->loadView("buscar-foto", [
+            'title' => "Buscar foto de perfil",
+            'APP_URL' =>  getenv('APP_URL'),
+        ]);
+    }
+
+    public function buscarLogados()
+    {
+        $this->loadView("buscar-logados", [
+            'title' => "Buscar foto de perfil",
+            'APP_URL' =>  getenv('APP_URL'),
+        ]);
+    }
+
     public function uploadPhotoProfile()
     {
 
@@ -55,7 +71,6 @@ class HomeController extends RenderView
 
     }
 
-
     public function setPhotoProfile(array $file)
     {
         $this->photoProfile = $file;
@@ -65,4 +80,5 @@ class HomeController extends RenderView
     {
         $this->idUsuario = $id_usuario;
     }
+
 }

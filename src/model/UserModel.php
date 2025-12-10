@@ -56,4 +56,20 @@ class UserModel extends Database
         
     }
 
+    public static function getPhotoProfile($id_usuario)
+    {
+        $data['id'] = $id_usuario;
+
+        $pdo = self::getConnection();
+        $stmt = $pdo->prepare("SELECT photo_profile FROM tb_users_chatapp WHERE user_id = ?");
+        $stmt->execute([$data['id']]);
+
+        if ($stmt->rowCount() < 1) return ['erro' => 'Descupe, não foi possível carrega a foto de perfil'];
+
+        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $user['photo_profile'];
+    }
+
 }

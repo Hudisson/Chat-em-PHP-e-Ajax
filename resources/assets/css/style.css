@@ -191,11 +191,18 @@ header {
     align-self: flex-start; /* Alinha à esquerda */
 }
 
+.data-mensagem{
+    margin-top: 5px;
+    margin-bottom: -6px;
+    font-size: 12px;
+}
+
 .msg-sent {
     background-color: var(--msg-sent-bg);
     border-radius: 15px 15px 5px 15px;
     align-self: flex-end; /* Alinha à direita */
 }
+
 
 /* ===============================================LISTA DE CONTATOS =================================================*/
 .contact-list {

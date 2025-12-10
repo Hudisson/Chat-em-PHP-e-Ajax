@@ -33,6 +33,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         $_SESSION['usuario_logado_email']  = $status['email'];
         $_SESSION['usuario_logado_status'] = $status['status'];
         $_SESSION['foto_de_perfil']        = $status['fotoPerfil'];
+        $_SESSION['usuario_oline']         = $status['user_online'];
 
         
         header("Location: $APP_URL/home", true, 302);

@@ -7,7 +7,11 @@ $routes = [
     "/sair"               => "LoginController@logout",
     "/cadastro"           => "CadastroController@index",
     "/termos-de-servico"  => "CadastroController@termosDeServico",
+    
     "/home"               => "HomeController@index",
     "/settings"           => "HomeController@settings",
+
+    "/buscar-foto"    => "HomeController@buscaFotoPerfil",
+    "/buscar-logados"    => "HomeController@buscarLogados",
  
 ];

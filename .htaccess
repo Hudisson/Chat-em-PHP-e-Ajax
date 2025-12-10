@@ -1,11 +1,16 @@
 Options -Indexes
 
 # Liga o Rewrite
+RewriteEngine On
 
-RewriteEngine on
+# Bloquear acesso ao .env
+<Files ".env">
+    Require all denied
+</Files>
+
 
 # REGRA DE REWRITE TUDO PARA INDEX
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(.*)$ ./index.php?url=$1 [QSA]
+RewriteRule ^(.*)$ index.php?url=$1 [QSA]

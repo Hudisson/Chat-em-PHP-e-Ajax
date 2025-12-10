@@ -30,7 +30,7 @@ class SettingsService
             $camnihoFisicoFinal = $pastaDestinoFisico . '/' . $novoNome;
 
             $camnihoRelativoFinal = $pastaDestinoRelativa . '/' . $novoNome;
-            
+
 
             # Salvar o camniho da imagem no banco de dados
             $fotoDePerfil = UserModel::uploadPhotoProfile($camnihoRelativoFinal, $id_usuario);
@@ -49,8 +49,19 @@ class SettingsService
             if($e->errorInfo[0] === 'HY000') return ['erro' => "Descupe, não foi possível conectar a base de dados."];
 
         }catch ( \Exception $e){
-            
+
             return ['erro' => $e->getMessage()];
         }
+    }
+
+    public static function getFotoDePerfil($id_usuario)
+    {
+        $fotoDePerfil = UserModel::getPhotoProfile($id_usuario);
+
+        if(empty($fotoDePerfil)){
+            return null;
+        }
+
+        return $fotoDePerfil;
     }
 }
