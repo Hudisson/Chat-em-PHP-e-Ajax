@@ -43,6 +43,14 @@ class HomeController extends RenderView
         ]);
     }
 
+    public function buscarConversas()
+    {
+        $this->loadView("conversas", [
+            'title' => "conversas",
+            'APP_URL' =>  getenv('APP_URL'),
+        ]);
+    }
+
     public function uploadPhotoProfile()
     {
 

@@ -29,9 +29,9 @@ if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['sen
     $newUser->setSenha(htmlspecialchars($_POST['senha'], ENT_QUOTES, 'UTF-8'));
     $newUser->setRSenha(htmlspecialchars($_POST['rsenha'], ENT_QUOTES, 'UTF-8'));
 
-    if(isset($_POST['termos'])){
+    if (isset($_POST['termos'])) {
         $newUser->setTermos('aceito');
-    }else{
+    } else {
         $newUser->setTermos(null);
     }
 
@@ -49,14 +49,16 @@ if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['sen
                     <h2 class="card-title text-center mb-4 text-primary">Crie sua Conta!</h2>
 
                     <?php if (array_key_exists("erro", $status)): ?>
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <?php echo $status['erro']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endif; ?>
 
                     <?php if (array_key_exists("sucesso", $status)): ?>
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <?php echo $status['sucesso']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endif; ?>
 
@@ -87,7 +89,7 @@ if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['sen
 
 
                         <div class="mb-3 form-check" style='<?php if ($status['erro'] == "É preciso aceitar os termos de uso"): ?> border: 3px solid red; <?php endif; ?>'>
-                            <input type="checkbox" class="form-check-input" id="termos" name="termos" >
+                            <input type="checkbox" class="form-check-input" id="termos" name="termos">
                             <label class="form-check-label" for="termos">Eu concordo com os <a href="<?php echo $APP_URL; ?>/termos-de-servico" class="text-decoration-none">Termos de Serviço</a></label>
                         </div>
 

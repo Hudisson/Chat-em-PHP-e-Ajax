@@ -3,6 +3,7 @@
 use App\service\UsuarioLogadoService;
 
 
+
 session_start();
 
 if (!isset($_SESSION['usuario_logado'])) {
@@ -28,3 +29,8 @@ if (isset($_POST['id'])) {
     echo json_encode($usuariosLogado);
 
 }
+
+?>
+
+
+

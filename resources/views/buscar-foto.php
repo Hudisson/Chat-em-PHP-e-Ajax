@@ -13,13 +13,15 @@ if(isset($_POST['id'])){
 
     $fotoPerfil = SettingsService::getFotoDePerfil($_POST['id']);
 
-    if(empty($fotoPerfil)){
-        echo json_encode(["imagem" =>  "../../../chat/resources/assets/img/user_996351.png"]);
-    }else{
-        echo json_encode(["imagem" => $fotoPerfil]);
-    }
+    // if(empty($fotoPerfil)){
+    //     echo json_encode(["imagem" =>  "../../../chat/resources/assets/img/no-photo.jpg"]);
+    // }else{
+    //     echo json_encode(["imagem" => $fotoPerfil]);
+    // }
+
+    echo json_encode(["imagem" => $fotoPerfil]);
 
 
 }
 
-
+?>

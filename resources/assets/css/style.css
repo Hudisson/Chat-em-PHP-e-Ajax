@@ -117,7 +117,6 @@ header {
 
 .profile-summary .online-status { /* Classe mais clara para o status */
     margin-right: 15px;
-    color: var(--online-color);
     font-size: 14px;
 }
 
@@ -163,8 +162,12 @@ header {
     align-items: center;
 }
 
-.contact-msg .status {
+.contact-msg .status-online, .estou-online{
     color: var(--online-color);
+}
+
+.contact-msg .status-offline {
+    color: #c9adad;
 }
 
 /* =======================================ÁREA DE CONVERSA=============================== */
@@ -178,14 +181,14 @@ header {
     padding: 15px;
 }
 
-.msg-received, .msg-sent {
+.msg-recebida, .msg-enviada {
     max-width: 60%; /* Define uma largura máxima para as bolhas */
     padding: 10px 15px;
     color: #fff;
     word-wrap: break-word; /* Garante que o texto quebre corretamente */
 }
 
-.msg-received {
+.msg-recebida {
     background-color: var(--msg-received-bg);
     border-radius: 15px 15px 15px 5px;
     align-self: flex-start; /* Alinha à esquerda */
@@ -197,7 +200,7 @@ header {
     font-size: 12px;
 }
 
-.msg-sent {
+.msg-enviada {
     background-color: var(--msg-sent-bg);
     border-radius: 15px 15px 5px 15px;
     align-self: flex-end; /* Alinha à direita */
@@ -278,10 +281,19 @@ header {
     font-weight: bold;
 }
 
-.friend-item .status {
+.friend-id{ display: none;}
+
+.friend-item .status{
     font-size: 12px;
-    color: var(--online-color);
     margin-left: 5px;
+}
+
+.friend-item .status-online {
+    color: var(--online-color);
+}
+
+.friend-item .status-offline{
+    color: #c9adad;
 }
 
 /* Estilo para links de logout */
