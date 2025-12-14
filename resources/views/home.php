@@ -97,7 +97,7 @@ include_once "includes/header.php";
     const APP_URL = "<?php echo $APP_URL ?>"; // Necessário para todas as requisições (URL base das requisições)
 </script>
 
-<script src="../../../chat/resources/assets/js/script.js"></script>
+<script src="../../../resources/assets/js/script.js"></script>
 
 <?php
 include_once "includes/footer.php";
