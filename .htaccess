@@ -8,7 +8,6 @@ RewriteEngine On
     Require all denied
 </Files>
 
-
 # REGRA DE REWRITE TUDO PARA INDEX
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

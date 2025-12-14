@@ -13,5 +13,6 @@ $routes = [
 
     "/buscar-foto"    => "HomeController@buscaFotoPerfil",
     "/buscar-logados"    => "HomeController@buscarLogados",
+    "/conversas"    => "HomeController@buscarConversas",
  
 ];

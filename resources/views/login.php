@@ -58,9 +58,11 @@ include_once "includes/header.php";
             <div class="card shadow-lg p-2 custom-card">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4 text-primary">Login</h2>
+
                     <?php if (array_key_exists("erro", $status)): ?>
-                        <div class="alert alert-danger" role="alert">
+                        <div  class="alert alert-danger alert-dismissible fade show" role="alert">
                             <?php echo $status['erro']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endif; ?>
 
