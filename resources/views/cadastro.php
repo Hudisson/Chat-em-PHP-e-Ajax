@@ -107,7 +107,7 @@ if (isset($_POST['nomeCompleto']) && isset($_POST['email']) && isset($_POST['sen
     </div>
 </div>
 
-<script src="../../../chat/resources/assets/js/eyeScriptCadastro.js"></script>
+<script src="../../../resources/assets/js/eyeScriptCadastro.js"></script>
 
 <?php
 include_once "includes/footer.php";

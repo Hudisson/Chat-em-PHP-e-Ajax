@@ -93,7 +93,7 @@ include_once "includes/header.php";
     </div>
 </div>
 
-<script src="../../../chat/resources/assets/js/eyeScriptLogin.js"></script>
+<script src="../../../resources/assets/js/eyeScriptLogin.js"></script>
 <?php
 include_once "includes/footer.php";
 ?>

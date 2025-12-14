@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: red;
+}
+
 /* Variáveis CSS para Cores e Espaçamento */
 :root {
     --header-bg: #ece9e9;

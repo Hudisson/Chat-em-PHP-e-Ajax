@@ -20,7 +20,7 @@
             dataType: "json",
             success: function(res) {
                 if (res.imagem && res.imagem !== ultimaImagem) {
-                    $("#fotoPerfil").attr("src", "../../../chat/resources/" + res.imagem);
+                    $("#fotoPerfil").attr("src", "../../../resources/" + res.imagem);
                     ultimaImagem = res.imagem;
                 }
             }
@@ -40,7 +40,7 @@
                 res.forEach(function(user) {
                     let html = ` 
                          <div class="friend-item conversar-btn">
-                            <img class="friendFotoPerfil" src="../../../chat/resources/${user.photo_profile}" alt="Foto de Perfil">
+                            <img class="friendFotoPerfil" src="../../../resources/${user.photo_profile}" alt="Foto de Perfil">
                             <div class="friend-info">
                                 <span class="friend-name">${user.user_name}</span>
                                 <span class="friend-id">${user.user_id}</span>
