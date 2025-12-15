@@ -75,7 +75,7 @@ Feito o login, você verá a seguinte tela
 
 <img src="https://github.com/Hudisson/Chat-em-PHP-e-Ajax/blob/main/imagens/chathome.png" width="1200px" />
 
-Agora selecione um usuário listado e comoçe a conversar
+Agora selecione um usuário listado e começe a conversar
 
 <img src="https://github.com/Hudisson/Chat-em-PHP-e-Ajax/blob/main/imagens/conversa.png" width="1200px" />
 
