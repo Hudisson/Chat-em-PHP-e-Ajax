@@ -30,7 +30,7 @@ docker compose up -d --build
 Acesse o terminal do seu SO e execulte:
 
 ```bash
-docker-compose exec -it chatapp bash
+docker exec -it chatapp bash
 ```
 
 Agora dentro do conatiner, execulte:
